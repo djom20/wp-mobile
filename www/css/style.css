@@ -1,0 +1,14 @@
+/* Empty. Add your own CSS if you like */
+.bar.bar-stable {
+	border-color: #b2b2b2;
+	background-color: #0086BF;
+	background-image: none;
+}
+
+.bar.bar-stable .title {
+	color: #fff;
+}
+
+.bar-stable .button.button-clear {
+	color: #fff;
+}
