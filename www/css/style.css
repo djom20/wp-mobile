@@ -12,3 +12,22 @@
 .bar-stable .button.button-clear {
 	color: #fff;
 }
+
+/* HELPERS */
+.pull-left {
+	float: left !important;
+}
+
+img.pull-left {
+	padding-right: 15px;
+	/*padding-bottom: 15px;*/
+	max-width: 120px;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+.scroll-content {
+	background-color: #eee;
+}

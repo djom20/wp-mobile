@@ -1,0 +1,45 @@
+<ion-view view-title="{{ current_post.title }}">
+  	<ion-content>
+	    <ion-list>
+			<div class="card">
+        		<div class="item item-text-wrap" style="border-bottom: none;">
+					<img ng-show="current_post.featured_image!=null" class="pull-left" src="{{ current_post.featured_image.attachment_meta.sizes.thumbnail.url }}">
+          			<div ng-bind-html="current_post.content">
+          				{{ current_post.content }}
+          			</div>
+        		</div>
+        		<div class="item" style="border-top: none; width: 100%;">
+			    	<span class="pull-left">by <a href="#/app/users/{{ current_post.author.ID }}">{{ current_post.author.name }}</a></span>
+			    	<p class="pull-right">Last update: {{ current_post.modified | date:'yyyy-MM-dd' }}</p>
+        		</div>
+      		</div>
+
+      		<div class="card">
+      			<div class="item item-divider">
+				    <p>Tags</p>
+				</div>
+        		<div ng-show="current_post.terms.category!=null" class="item item-text-wrap" style="border-bottom: none;">
+        			<ul style="float: left; padding-bottom: 10px;">
+        				<li ng-repeat="ct in current_post.terms.category" style="float: left; margin-right: 5px;">
+							<a href="#/app/taxonomies/category/terms/{{ ct.ID }}">{{ ct.name }}</a>
+						</li>
+					</ul>
+        		</div>
+      		</div>
+
+      		<div class="card">
+      			<div class="item item-divider">
+				    <p>Comentarios</p>
+				</div>
+        		<div class="item item-text-wrap" ng-repeat="comment in commentsPost" style="float: left; width: 100%;">
+        			<img class="pull-left" src="{{ comment.author.avatar }}">
+        			<div ng-bind-html="comment.content">{{ comment.content }}</div>
+				    <p>
+					    <a href="#" class="subdued">by {{ comment.author.name }}</a>
+					    <a href="#" class="subdued">date {{ comment.date | date:'yyyy-MM-dd' }}</a>
+					</p>
+        		</div>
+      		</div>
+	    </ion-list>
+  	</ion-content>
+</ion-view>
