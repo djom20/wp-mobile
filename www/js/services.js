@@ -14,13 +14,17 @@ angular.module('starter.services', [])
         return true;
     }
 
-    this.get = function (url, post){
+    this.get = function (url, id){
     	this.init(url); /* Inicializando proceso */
-
-        if(post != null){
-            return $http.get(this.base_url + '/' + this.url + '/' + post.id);
+        if(id != null){
+            return $http.get(this.base_url + '/' + this.url + '/' + id);
         }else{
             return $http.get(this.base_url + '/' + this.url);
+
+            /*return uget({
+                type: 'GET',
+                url: this.base_url + '/' + this.url
+            });*/
         }
     }
 

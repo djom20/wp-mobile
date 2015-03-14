@@ -42,6 +42,26 @@ angular.module('starter.controllers', [])
     });
 })
 
+.controller('PostCtrl', function($scope, $stateParams, $sce, wpServices) {
+    $scope.current_post = {};
+    $scope.commentsPost = {};
+    console.log('Params', $stateParams.postId);
+
+    wpServices.get('posts', $stateParams.postId)
+    .success(function(data){
+        $scope.current_post = data;
+        $scope.current_post.content = $sce.trustAsHtml(data.content);
+    });
+
+    wpServices.get('posts/' + $stateParams.postId + '/comments')
+    .success(function(data){
+        $scope.commentsPost = data;
+        for (var i = $scope.commentsPost.length - 1; i >= 0; i--) {
+            $scope.commentsPost[i].content = $sce.trustAsHtml(data[i].content);
+        };
+    });
+})
+
 .controller('UpkeepCtrl', function($scope, wpServices) {
     console.log('UpKepp');
 });

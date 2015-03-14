@@ -79,6 +79,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                         controller: 'HomeCtrl'
                     }
                 }
+            })
+            .state('app.post', {
+                url: "/post/:postId",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/post.html",
+                        controller: 'PostCtrl'
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/app/home');
